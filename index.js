@@ -1,6 +1,6 @@
 import { client } from "@gradio/client";
-import { core } from "@actions/core";
-import { github } from "@actions/github";
+import * as core from '@actions/core';
+import * as github from '@actions/github'
 
 console.log(process.env.APP_PROMPT)
 
