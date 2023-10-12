@@ -3,7 +3,7 @@ run-name: ${{ github.actor }}
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * 1-5'
+    - cron: '25 14 * * 1-5'
 
 env:
   APP_PROMPT: ${{ vars.APP_PROMPT }}
