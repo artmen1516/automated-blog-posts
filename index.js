@@ -14,6 +14,4 @@ const result = await app.predict(5, [
   null,
 ]);
 
-console.log(result);
-
 core.setOutput("result", result);

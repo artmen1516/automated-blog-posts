@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '*/5 * * * *'
 
+env:
+  APP_PROMPT: ${{ vars.APP_PROMPT }}
+
 jobs:
   generate-blog:
     runs-on: ubuntu-latest
@@ -16,10 +19,13 @@ jobs:
       - name: install dependencies
         run: |
           npm install
+      - name: show prompt
+        run: |
+          echo "${{ env.APP_PROMPT }}"
       - name: generate blog
         id: generate-blog
         run: |
           npm start
-      - name: show output
+      - name: show result
         run: |
           echo "${{ steps.generate-blog.outputs.result }}"
