@@ -1,8 +1,5 @@
 name: automated-blog-generator
-description: A simple blog generator that uses a template and a list of posts to generate a static blog.
-version: 0.1.0
-author: "Arturo Mendivil"
-
+run-name: ${{ github.actor }}
 on: 
   workflow_dispatch:
   schedule:
