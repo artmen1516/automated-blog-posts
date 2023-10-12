@@ -1,0 +1,24 @@
+{
+  "name": "automated-blog-posts",
+  "version": "1.0.0",
+  "description": "An scheduled tool to publish new posts in my blog using OpenOrca and sanity as CMS",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-artmen1516:artmen1516/automated-blog-posts.git"
+  },
+  "author": "arturoo1516@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@gradio/client": "^0.5.1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  }
+}
