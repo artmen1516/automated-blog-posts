@@ -21,11 +21,11 @@ jobs:
           npm install
       - name: show prompt
         run: |
-          "${{ env.APP_PROMPT }}"
+          echo "${{ env.APP_PROMPT }}"
       - name: generate blog
         id: generate-blog
         run: |
           npm start
       - name: show result
         run: |
-          "${{ steps.generate-blog.outputs.result }}"
+          echo "${{ steps.generate-blog.outputs.result }}"
