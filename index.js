@@ -31,7 +31,7 @@ ws.on('message', (data) => {
     const response = {
       "fn_index":3,
       "data":[
-        "como te encuentras el dia de hoy?",
+        process.env.APP_PROMPT,
         1,
         1,
         1,
