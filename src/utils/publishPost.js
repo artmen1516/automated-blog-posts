@@ -14,7 +14,7 @@ export default async function publishPost(post) {
   const queryResult = await getAllPosts();
   const allPosts = queryResult.data.result;
   const similarityArray = allPosts.map(post => distance(title, post.title));
-  const isDuplicate = similarityArray.some(similarity => similarity > 80);
+  const isDuplicate = similarityArray.some(similarity => similarity < 20);
   const combinedArray = allPosts.map((title, index) => ({
     title: title.title,
     distance: similarityArray[index]
