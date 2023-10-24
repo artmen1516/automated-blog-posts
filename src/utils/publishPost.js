@@ -131,7 +131,7 @@ export async function publishPost(post) {
 export async function getAllPosts(){
   let result = null;
   try {
-    result = axios.get('https://zfsyewq1.api.sanity.io/v2021-10-21/data/query/production?query=*[_type%20==%20%22post%22]{title}',
+    result = axios.get(`https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${process.env.SANITY_DATASET}?query=*[_type%20==%20%22post%22]{title}`,
     { headers: {
       'authorization': `Bearer ${process.env.SANITY_API_TOKEN}`,
       'Content-Type': 'application/json',

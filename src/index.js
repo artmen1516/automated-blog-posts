@@ -43,7 +43,7 @@ ws.on('message', (data) => {
     const response = {
       "fn_index":3,
       "data":[
-        process.env.APP_PROMPT,
+        promptModified,
         1,
         1,
         1,
