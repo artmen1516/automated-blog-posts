@@ -3,7 +3,7 @@ import { parse } from 'node-html-parser';
 import axios from 'axios';
 import { distance } from 'fastest-levenshtein';
 
-export default async function publishPost(post) {
+export async function publishPost(post) {
 
   const parsedResponse = parse(post);
   const title = parsedResponse.querySelector('h1').innerHTML;
@@ -24,10 +24,12 @@ export default async function publishPost(post) {
   console.log("Comparing post to existing posts...")
   console.log(combinedArray);
   
-  if (isDuplicate) {
-    console.log("Duplicate post detected, not publishing and exiting...");
-    process.exit(0);
-  }
+  // Currently disabled because I'm testing dynamic prompts to prevent duplicates,
+  // Maybe this is a better solution than checking for duplicates.
+  // if (isDuplicate) {
+  //   console.log("Duplicate post detected, not publishing and exiting...");
+  //   process.exit(0);
+  // }
 
   let mutationContent = [] 
   
@@ -125,6 +127,21 @@ export default async function publishPost(post) {
   }
 }
 
+// Get all posts from my Sanity.io dataset
+export async function getAllPosts(){
+  let result = null;
+  try {
+    result = axios.get('https://zfsyewq1.api.sanity.io/v2021-10-21/data/query/production?query=*[_type%20==%20%22post%22]{title}',
+    { headers: {
+      'authorization': `Bearer ${process.env.SANITY_API_TOKEN}`,
+      'Content-Type': 'application/json',
+    }});
+  } catch(error) {
+    console.log(error);
+  }
+  return result;
+}
+
 // ---- Helper Functions ----
 
 // Generate a random string of a given length
@@ -147,17 +164,3 @@ function slugify(str) {
     .replace(/-+/g, '-'); // remove consecutive hyphens
 }
 
-// Get all posts from my Sanity.io dataset
-async function getAllPosts(){
-  let result = null;
-  try {
-    result = axios.get('https://zfsyewq1.api.sanity.io/v2021-10-21/data/query/production?query=*[_type%20==%20%22post%22]{title}',
-    { headers: {
-      'authorization': `Bearer ${process.env.SANITY_API_TOKEN}`,
-      'Content-Type': 'application/json',
-    }});
-  } catch(error) {
-    console.log(error);
-  }
-  return result;
-}

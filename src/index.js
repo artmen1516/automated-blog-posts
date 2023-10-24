@@ -1,13 +1,18 @@
 import * as core from '@actions/core';
 import WebSocket from 'ws';
-import publishPost from './utils/publishPost.js';
+import {getAllPosts, publishPost} from './utils/publishPost.js';
 
 const startTime = new Date()
 console.log('Starting script at ' + startTime.toTimeString())
 console.log('----------------------------------')
 console.log('Input to process:',process.env.APP_PROMPT)
 console.log('----------------------------------')
-
+const queryPosts = await getAllPosts();
+const allPosts = queryPosts.data.result;
+const allPostsTitles = allPosts.map(post => post.title).join(", ");
+const promptModified = process.env.APP_PROMPT + ", these titles are already published: " + allPostsTitles;
+console.log('Modified input:', promptModified)
+console.log('----------------------------------')
 // Create a new websocket connection to the server
 const ws = new WebSocket('wss://yuntian-deng-chatgpt.hf.space/queue/join');
 const randomSession = Math.floor(Math.random() * 1000000000000).toString();
