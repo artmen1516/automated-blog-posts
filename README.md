@@ -21,12 +21,12 @@ The script `index.js` uses the [Sanity HTTP API Mutations](https://www.sanity.io
 The script uses the following environment variables to generate the post:
 
 Repository Environment Variables:
-- `SANITY_PROJECT_ID`: The project id of your Sanity project.
-- `SANITY_DATASET`: The dataset of your Sanity project.
 - `APP_PROMPT`: The prompt that the chatbot will use to generate the post.
 
 Repository Secrets:
 - `SANITY_API_TOKEN`: The API token of your Sanity project.
+- `SANITY_PROJECT_ID`: The project id of your Sanity project.
+- `SANITY_DATASET`: The dataset of your Sanity project.
 
 ### Sanity Schema
 Post Document 
