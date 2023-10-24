@@ -13,6 +13,7 @@ I use [GitHub Actions](https://github.com/features/actions) to schedule a job th
 The script `index.js` uses [HuggingFace Spaces](https://huggingface.co/spaces) to generate the new post. It uses the [yuntian-deng/ChatGPT](https://huggingface.co/spaces/yuntian-deng/ChatGPT) space using `gpt-3.5-turbo` to generate the post.
 
 ### 3. Publish Post
+The script `index.js` uses the [Sanity HTTP API Mutations](https://www.sanity.io/docs/http-mutations) to create the new post in Sanity. 
 
 ## Requirements
 
